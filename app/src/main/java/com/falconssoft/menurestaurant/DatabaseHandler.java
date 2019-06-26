@@ -93,7 +93,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-
     public void addItem(Items items) {
         db = this.getReadableDatabase();
         ContentValues values = new ContentValues();
@@ -176,7 +175,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return items;
     }
 
-
     public List<Users> getAllUSER() {
         List<Users> usersList = new ArrayList<Users>();
 
@@ -196,7 +194,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return usersList;
     }
-
 
     public List<Setting> getAllSetting() {
         List<Setting> settingsList = new ArrayList<Setting>();
@@ -219,5 +216,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
+    public void deleteAllUsers() {
+        db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + USERS + ";");
+        db.close();
+    }
 
 }

@@ -3,8 +3,8 @@ package com.falconssoft.menurestaurant.Models;
 public class Users {
 
 
-    public String userName;
-    public String userPassword;
+    private String userName;
+    private String userPassword;
 
     public Users() {
 
