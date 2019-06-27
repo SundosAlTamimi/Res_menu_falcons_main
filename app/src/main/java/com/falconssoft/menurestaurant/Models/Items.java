@@ -64,8 +64,8 @@ public class Items {
         this.description = description;
     }
 
-    public double getPrice() {
-        return price;
+    public String getPrice() {
+        return price+"$";
     }
 
     public void setPrice(double price) {

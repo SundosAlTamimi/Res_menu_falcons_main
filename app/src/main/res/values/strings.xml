@@ -5,6 +5,10 @@
     <string name="login">Login</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="ItemName">Item Name</string>
+    <string name="GroupName">Group Name</string>
+    <string name="price">50$</string>
+    <string name="Description">Description</string>
     <string name="ar">Ar</string>
     <string name="en">En</string>
 
