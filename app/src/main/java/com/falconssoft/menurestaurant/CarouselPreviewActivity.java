@@ -36,7 +36,7 @@ public class CarouselPreviewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.category_activatys);
+        setContentView(R.layout.);
 
         list.add("one");
         list.add("two");
