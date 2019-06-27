@@ -44,7 +44,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String LANGUAGE_OPTION = "LANGUAGE_OPTION";
     private static final String IP_CONNECT = "IP_CONNECT";
-
+//logo ,comp name
     //___________________________________________________________________________________
 
     public DatabaseHandler(Context context) {
