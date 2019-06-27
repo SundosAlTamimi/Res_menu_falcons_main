@@ -93,7 +93,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-
     public void addItem(Items items) {
         db = this.getReadableDatabase();
         ContentValues values = new ContentValues();
@@ -219,6 +218,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
+    public void deleteAllUsers() {
+        db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + USERS + ";");
+        db.close();
+    }
     public List<Items> getAllItemsByCategory(String CatName) {
         List<Items> items = new ArrayList<Items>();
 
