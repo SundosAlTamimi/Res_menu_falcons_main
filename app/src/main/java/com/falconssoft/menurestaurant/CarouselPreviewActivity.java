@@ -36,7 +36,7 @@ public class CarouselPreviewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.category_listview);
+        setContentView(R.layout.);
 
         list.add("one");
         list.add("two");
@@ -139,7 +139,7 @@ DatabaseHandler db;
     @NonNull
     @Override
     public CViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(context).inflate(R.layout.categoty_layout, viewGroup, false );
+        View view = LayoutInflater.from(context).inflate(R.layout, viewGroup, false );
         return new CViewHolder(view);
     }
 

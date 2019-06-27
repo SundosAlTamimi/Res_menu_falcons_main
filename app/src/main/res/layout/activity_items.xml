@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/foodedittable"
     tools:context=".ItemsActivity">
+    <TextView
+    android:id="@+id/group_name"
+    android:textColor="@android:color/holo_red_dark"
 
-</android.support.constraint.ConstraintLayout>
+    android:text="@string/GroupName"
+    android:gravity="center"
+    android:layout_marginTop="50dp"
+    android:layout_marginLeft="100dp"
+    android:textSize="25dp"
+    android:layout_height="80dp"
+    android:layout_width="150dp"/>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/recyclerview_item_list"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
+        android:scrollbars="vertical"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
