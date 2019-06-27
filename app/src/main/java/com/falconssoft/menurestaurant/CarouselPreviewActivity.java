@@ -36,7 +36,7 @@ public class CarouselPreviewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.);
+        setContentView(R.layout.category_activaty);
 
         list.add("one");
         list.add("two");
@@ -139,7 +139,7 @@ DatabaseHandler db;
     @NonNull
     @Override
     public CViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(context).inflate(R.layout, viewGroup, false );
+        View view = LayoutInflater.from(context).inflate(R.layout.categoty_layout, viewGroup, false );
         return new CViewHolder(view);
     }
 
@@ -157,13 +157,9 @@ DatabaseHandler db;
             public void onClick(View v) {
                 Log.e("item ...","i"+v.getId()+"-->"+i+"===>"+list.get(i));
 
-                Intent itemIntent=new Intent(context,LoginActivity.class);
+                Intent itemIntent=new Intent(context,ItemsActivity.class);
                 itemIntent.putExtra("categoryName",list.get(i));
                 context.startActivity(itemIntent);
-
-//                Intent intent=getIntent();
-//
-//                String inta= intent.getStringExtra("categoryName");
 
             }
         });

@@ -223,8 +223,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM " + USERS + ";");
         db.close();
     }
-    public List<Items> getAllItemsByCategory(String CatName) {
-        List<Items> items = new ArrayList<Items>();
+    public ArrayList<Items> getAllItemsByCategory(String CatName) {
+        ArrayList<Items> items = new ArrayList<Items>();
 
         String selectQuery = "SELECT  * FROM " + ITEMS +"WHERE CATEGORY_NAME " +" = '"+CatName +"'";
         db = this.getWritableDatabase();

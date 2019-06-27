@@ -1,12 +1,14 @@
 package com.falconssoft.menurestaurant;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -20,12 +22,18 @@ public class ItemsActivity extends AppCompatActivity {
     RequestQueue requestQueue;
     Context context;
     Items items;
+    String inta;
+    DatabaseHandler mydatabase;
     ArrayList<Items> itemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items);
+        Intent intent = getIntent();
+        inta = intent.getStringExtra("categoryName");
+        TextView group_name=(TextView)findViewById(R.id.group_name);
+        group_name.setText(inta);
         itemList = new ArrayList<>();
         requestQueue = Volley.newRequestQueue(getApplicationContext());
         loadItems();
@@ -38,7 +46,7 @@ public class ItemsActivity extends AppCompatActivity {
     }
 
     private void loadItems() {
-        items = new Items();
+        Items items=new Items();
         items.setItemName("Salad");
         items.setDescription("salad with some vigtable");
         items.setPrice(20);
