@@ -219,5 +219,42 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
+    public List<Items> getAllItemsByCategory(String CatName) {
+        List<Items> items = new ArrayList<Items>();
+
+        String selectQuery = "SELECT  * FROM " + ITEMS +"WHERE CATEGORY_NAME " +" = '"+CatName +"'";
+        db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Items item = new Items();
+
+                item.setCategoryName(cursor.getString(0));
+                item.setItemName(cursor.getString(1));
+                item.setItemBarcode(Integer.parseInt(cursor.getString(2)));
+                item.setPrice(Double.parseDouble(cursor.getString(3)));
+                item.setDescription(cursor.getString(4));
+                try {
+                    item.setItemPic(cursor.getString(5));
+                    item.setCategoryPic(cursor.getString(6));
+                }catch (OutOfMemoryError e) {
+                    e.getMessage();
+                    Log.e("have error ..","1==out of memory ");
+                }
+//                if (cursor.getBlob(20).length == 0)
+//                    item.setPic(null);
+//                else
+//                    item.setPic(BitmapFactory.decodeByteArray(cursor.getBlob(20), 0, cursor.getBlob(20).length));
+
+                // Adding transaction to list
+
+                items.add(item);
+            } while (cursor.moveToNext());
+        }
+        return items;
+    }
+
+
 
 }

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:background="@drawable/foodedittable">
+    android:background="@drawable/foodedittable"
+    tools:context=".LoginActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -16,11 +16,11 @@
         android:layout_marginTop="104dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="@string/menu"
-        android:textSize="70sp"
         android:fontFamily="cursive"
-        android:textColor="@color/white_dark"
         android:gravity="center"
+        android:text="@string/menu"
+        android:textColor="@color/white_dark"
+        android:textSize="70sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -72,11 +72,11 @@
         android:layout_marginRight="200dp"
         android:layout_marginBottom="8dp"
         android:background="@color/red"
+        android:padding="10dp"
         android:text="@string/login"
         android:textAllCaps="false"
         android:textColor="@color/white_dark"
         android:textSize="25sp"
-        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
