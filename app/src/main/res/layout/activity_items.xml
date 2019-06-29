@@ -10,7 +10,7 @@
     android:layoutDirection="ltr">
     <TextView
     android:id="@+id/group_name"
-    android:textColor="@android:color/holo_red_dark"
+    android:textColor="@color/white_dark"
 
     android:text="@string/GroupName"
     android:gravity="center"

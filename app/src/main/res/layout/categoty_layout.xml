@@ -10,6 +10,7 @@
         android:id="@+id/layMain"
         android:layout_width="320dp"
         android:layout_height="496dp"
+
         android:background="@drawable/back_layout"
         android:orientation="horizontal">
 
@@ -25,6 +26,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/burger"/>
+
 
             <TextView
                 android:id="@+id/category_text"

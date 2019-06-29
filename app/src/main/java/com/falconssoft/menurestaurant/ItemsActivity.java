@@ -22,18 +22,18 @@ public class ItemsActivity extends AppCompatActivity {
     RequestQueue requestQueue;
     Context context;
     Items items;
+    String inta;
+    DatabaseHandler mydatabase;
     ArrayList<Items> itemList;
-    TextView groupName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items);
-        groupName=(TextView)findViewById(R.id.group_name);
-        Intent catIntent=getIntent();
-        String categoryName=catIntent.getStringExtra("categoryName");
-        groupName.setText(categoryName);
-
+        Intent intent = getIntent();
+        inta = intent.getStringExtra("categoryName");
+        TextView group_name=(TextView)findViewById(R.id.group_name);
+        group_name.setText(inta);
         itemList = new ArrayList<>();
         requestQueue = Volley.newRequestQueue(getApplicationContext());
         loadItems();
@@ -46,7 +46,7 @@ public class ItemsActivity extends AppCompatActivity {
     }
 
     private void loadItems() {
-        items = new Items();
+        Items items=new Items();
         items.setItemName("Salad");
         items.setDescription("salad with some vigtable");
         items.setPrice(20);
