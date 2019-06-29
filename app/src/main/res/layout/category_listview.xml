@@ -22,11 +22,11 @@
             android:background="@drawable/user" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:gravity="bottom"
-            android:text="User Name"
+            android:text="@string/username"
             android:textColor="@color/white_dark" />
 
     </TableRow>
@@ -38,7 +38,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="30dp"
         android:gravity="center"
-        android:text="Categores ..."
+        android:text="@string/category"
         android:textColor="@color/white_dark"
         android:textSize="90dp"
         android:textStyle="bold"

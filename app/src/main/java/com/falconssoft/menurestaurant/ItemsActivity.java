@@ -1,12 +1,14 @@
 package com.falconssoft.menurestaurant;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -21,11 +23,17 @@ public class ItemsActivity extends AppCompatActivity {
     Context context;
     Items items;
     ArrayList<Items> itemList;
+    TextView groupName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items);
+        groupName=(TextView)findViewById(R.id.group_name);
+        Intent catIntent=getIntent();
+        String categoryName=catIntent.getStringExtra("categoryName");
+        groupName.setText(categoryName);
+
         itemList = new ArrayList<>();
         requestQueue = Volley.newRequestQueue(getApplicationContext());
         loadItems();

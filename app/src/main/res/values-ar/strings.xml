@@ -9,9 +9,8 @@
     <string name="GroupName">إسم الصنف </string>
     <string name="price">50$</string>
     <string name="Description">الوصف</string>
-
-    <string name="login">دخول</string>
-    <string name="username">اسم المستخدم</string>
-    <string name="password">كلمة المرور</string>
+    <string name="ar">Ar</string>
+    <string name="en">En</string>
+    <string name="category">الفئات ...</string>
 
 </resources>

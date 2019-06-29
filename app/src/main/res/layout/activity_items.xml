@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/foodedittable"
-    tools:context=".ItemsActivity">
+    tools:context=".ItemsActivity"
+    android:layoutDirection="ltr">
     <TextView
     android:id="@+id/group_name"
     android:textColor="@android:color/holo_red_dark"
