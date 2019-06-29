@@ -14,7 +14,6 @@
         <activity
             android:name=".ItemsActivity"
             android:screenOrientation="sensorPortrait"></activity>
-        <activity android:name=".CategoryActivity" />
         <activity
             android:name=".LoginActivity"
             android:screenOrientation="sensorPortrait"
@@ -28,20 +27,8 @@
         <activity android:name=".CategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
-        <activity android:name=".ItemsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".ItemsActivity">  </activity>
     </application>
 
 </manifest>

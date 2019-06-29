@@ -4,9 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/foodedittable"
+    android:background="@drawable/dfood"
     android:orientation="vertical"
     android:layoutDirection="ltr">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_light"
+        android:orientation="vertical">
 
     <TableRow
         android:layout_width="match_parent"
@@ -35,20 +41,20 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="174dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="0dp"
         android:gravity="center"
         android:text="@string/category"
         android:textColor="@color/white_dark"
-        android:textSize="90dp"
+        android:textSize="70dp"
         android:textStyle="bold"
         app:fontFamily="cursive" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/categoryRecycler"
-        android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:layout_gravity="center" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/categoryRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:layout_gravity="center" />
 
     <TableRow
         android:layout_width="match_parent"
@@ -65,4 +71,5 @@
             android:fontFamily="cursive"/>
     </TableRow>
 
+    </LinearLayout>
 </LinearLayout>
