@@ -7,17 +7,19 @@
     android:orientation="vertical"
     android:background="@drawable/foodedittable"
     tools:context=".ItemsActivity">
-    <TextView
-    android:id="@+id/group_name"
-    android:textColor="@color/white_dark"
 
-    android:text="@string/GroupName"
-    android:gravity="center"
-    android:layout_marginTop="50dp"
-    android:layout_marginLeft="100dp"
-    android:textSize="25dp"
-    android:layout_height="80dp"
-    android:layout_width="150dp"/>
+    <TextView
+        android:id="@+id/group_name"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="@string/GroupName"
+        android:textColor="@color/white_dark"
+        android:textSize="80dp"
+        android:textStyle="bold"
+        app:fontFamily="cursive" />
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:id="@+id/recyclerview_item_list"
