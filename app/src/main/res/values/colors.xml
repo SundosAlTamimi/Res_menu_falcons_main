@@ -10,7 +10,7 @@
     <color name="red">#801717</color>
     <color name="green">#103601</color>
     <color name="black">#000000</color>
-    <color name="black_light">#AD000000</color>
+    <color name="black_light">#86000000</color>
     <color name="gray">#D2666565</color>
     <color name="red_item_background">#DD2424</color>
 </resources>

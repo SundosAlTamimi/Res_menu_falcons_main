@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 boolean found = false;
                 String usernameText = username.getText().toString();
                 String passwordText = password.getText().toString();
-                if (usernameText != null && passwordText != null) {
+                if (!usernameText.equals(null) && !passwordText.equals(null)) {
                     for (int i = 0; i < users.size(); i++)
                         if (usernameText .equals( users.get(i).getUserName()))
                             if (passwordText.equals(users.get(i).getUserPassword())) {

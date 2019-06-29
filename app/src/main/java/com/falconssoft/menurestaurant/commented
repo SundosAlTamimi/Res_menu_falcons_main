@@ -1,0 +1,20 @@
+
+F5F7F5F3
+F8F5F5
+
+
+F5F5F8F7
+
+ <View
+            android:layout_width="150dp"
+            android:layout_height="3dp"
+            android:layout_marginStart="220dp"
+            android:layout_marginLeft="220dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/white_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.0" />
