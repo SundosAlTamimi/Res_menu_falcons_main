@@ -2,14 +2,15 @@
 <resources>
     <string name="app_name">قائمة المطعم </string>
     <string name="menu">القائمة...</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="username">اسم المستخدم</string>
+    <string name="password">رقم السر </string>
     <string name="ItemName">اسم المادة</string>
     <string name="GroupName">إسم الصنف </string>
     <string name="price">50$</string>
     <string name="Description">الوصف</string>
+    <string name="ar">Ar</string>
+    <string name="en">En</string>
+    <string name="category">الفئات ...</string>
 
-    <string name="login">دخول</string>
-    <string name="username">اسم المستخدم</string>
-    <string name="password">كلمة المرور</string>
-    <string name="ar">عربي</string>
-    <string name="en">انجليزي</string>
 </resources>
