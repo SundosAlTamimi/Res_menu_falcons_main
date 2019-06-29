@@ -44,7 +44,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String LANGUAGE_OPTION = "LANGUAGE_OPTION";
     private static final String IP_CONNECT = "IP_CONNECT";
-
+//logo ,comp name
     //___________________________________________________________________________________
 
     public DatabaseHandler(Context context) {
@@ -175,6 +175,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return items;
     }
 
+
     public List<Users> getAllUSER() {
         List<Users> usersList = new ArrayList<Users>();
 
@@ -194,6 +195,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return usersList;
     }
+
 
     public List<Setting> getAllSetting() {
         List<Setting> settingsList = new ArrayList<Setting>();
@@ -221,5 +223,42 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM " + USERS + ";");
         db.close();
     }
+    public ArrayList<Items> getAllItemsByCategory(String CatName) {
+        ArrayList<Items> items = new ArrayList<Items>();
+
+        String selectQuery = "SELECT  * FROM " + ITEMS +"WHERE CATEGORY_NAME " +" = '"+CatName +"'";
+        db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Items item = new Items();
+
+                item.setCategoryName(cursor.getString(0));
+                item.setItemName(cursor.getString(1));
+                item.setItemBarcode(Integer.parseInt(cursor.getString(2)));
+                item.setPrice(Double.parseDouble(cursor.getString(3)));
+                item.setDescription(cursor.getString(4));
+                try {
+                    item.setItemPic(cursor.getString(5));
+                    item.setCategoryPic(cursor.getString(6));
+                }catch (OutOfMemoryError e) {
+                    e.getMessage();
+                    Log.e("have error ..","1==out of memory ");
+                }
+//                if (cursor.getBlob(20).length == 0)
+//                    item.setPic(null);
+//                else
+//                    item.setPic(BitmapFactory.decodeByteArray(cursor.getBlob(20), 0, cursor.getBlob(20).length));
+
+                // Adding transaction to list
+
+                items.add(item);
+            } while (cursor.moveToNext());
+        }
+        return items;
+    }
+
+
 
 }

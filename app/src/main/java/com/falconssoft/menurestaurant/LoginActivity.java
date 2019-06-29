@@ -56,15 +56,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String passwordText = password.getText().toString();
                 if (usernameText != null && passwordText != null) {
                     for (int i = 0; i < users.size(); i++)
-                        if (usernameText == users.get(i).getUserName())
+                        if (usernameText .equals( users.get(i).getUserName()))
                             if (passwordText.equals(users.get(i).getUserPassword())) {
                                 found = true;
                                 Intent categoryIntent = new Intent(LoginActivity.this, CategoryActivity.class);
+                                categoryIntent.putExtra("userName",usernameText);
                                 startActivity(categoryIntent);
                             }
 
                     if (found == false) {
-                        Toast.makeText(this, "Wrong in username or password!", Toast.LENGTH_SHORT).show();
+                        if (usernameText.equals("admin")){
+                            if (passwordText.equals("admin")) {
+                                Intent categoryIntent = new Intent(LoginActivity.this, CategoryActivity.class);
+                                categoryIntent.putExtra("userName", usernameText);
+                                startActivity(categoryIntent);
+                            }else { Toast.makeText(this, "Wrong in username or password!", Toast.LENGTH_SHORT).show();}
+                        }else{
+                        Toast.makeText(this, "Wrong in username or password!", Toast.LENGTH_SHORT).show();}
                     }
                 } else {
                     username.setError("Required field!");
