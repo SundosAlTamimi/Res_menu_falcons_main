@@ -29,6 +29,13 @@
             android:text="@string/username"
             android:textColor="@color/white_dark" />
 
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/setting"
+            app:srcCompat="@drawable/setting" />
+
     </TableRow>
 
     <TextView
