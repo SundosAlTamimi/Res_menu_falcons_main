@@ -19,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.falconssoft.menurestaurant.Models.Setting;
 import com.falconssoft.menurestaurant.Models.Users;
 
 import java.util.ArrayList;
@@ -107,9 +108,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.setting:
-
-                SettingDialog();
-
+                SettingPassword();
                 break;
 
         }
@@ -118,16 +117,58 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     void SettingDialog(){
 
-        Dialog settingDialog= new Dialog(LoginActivity.this);
+        final Dialog settingDialog= new Dialog(LoginActivity.this);
         settingDialog.setCancelable(false);
+        settingDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         settingDialog.setCanceledOnTouchOutside(false);
         settingDialog.setContentView(R.layout.setting_dialog);
 
-        EditText ipServer,RestName;
+        final EditText ipServer,RestName;
+        Button save,exit;
 
         ipServer=(EditText)settingDialog.findViewById(R.id.ip_edit);
         RestName=(EditText)settingDialog.findViewById(R.id.restName);
         logoImage=(ImageView)settingDialog.findViewById(R.id.logo);
+
+        List<Setting>set=new ArrayList<>();
+
+        set=databaseHandler.getAllSetting();
+
+        if(set.size()!=0){
+            ipServer.setText(set.get(0).getIpConnection());
+            RestName.setText(set.get(0).getRestName());
+        }else {
+            Toast.makeText(this, "not data ...", Toast.LENGTH_SHORT).show();
+        }
+
+        save=(Button)settingDialog.findViewById(R.id.save);
+        exit=(Button)settingDialog.findViewById(R.id.exit);
+
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!ipServer.getText().toString().equals("")&&!RestName.getText().toString().equals("")){
+
+                    databaseHandler.deleteAllSetting();
+                    Setting set =new Setting(ipServer.getText().toString(),RestName.getText().toString());
+                    databaseHandler.addSetting(set);
+
+                    Toast.makeText(LoginActivity.this, "Save", Toast.LENGTH_SHORT).show();
+                    settingDialog.dismiss();
+
+                }else{
+                    Toast.makeText(LoginActivity.this, "Please fill all Data ", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                settingDialog.dismiss();
+            }
+        });
 
         logoImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,5 +208,60 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         }
     }
+
+
+    void SettingPassword(){
+
+        final Dialog passwordDialog= new Dialog(LoginActivity.this);
+        passwordDialog.setCancelable(false);
+        passwordDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        passwordDialog.setCanceledOnTouchOutside(false);
+        passwordDialog.setContentView(R.layout.setting_password);
+
+        final EditText password=(EditText)passwordDialog.findViewById(R.id.pass_setting);
+
+        Button done,exit;
+
+        done=(Button) passwordDialog.findViewById(R.id.done);
+        exit=(Button) passwordDialog.findViewById(R.id.exit);
+
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                passwordDialog.dismiss();
+
+            }
+        });
+
+
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(!password.getText().toString().equals("")){
+                    if(password.getText().toString().equals("admin30")){
+
+                        SettingDialog();
+                        passwordDialog.dismiss();
+
+                    }else{
+                        Toast.makeText(LoginActivity.this, "The Password is incorrect", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }else{
+
+                    Toast.makeText(LoginActivity.this, "please enter the password ", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        });
+
+
+    passwordDialog.show();
+    }
+
 
 }

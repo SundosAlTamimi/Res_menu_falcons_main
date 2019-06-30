@@ -12,5 +12,7 @@
     <string name="ar">Ar</string>
     <string name="en">En</string>
     <string name="category">Category ...</string>
+    <string name="save">save</string>
+    <string name="exit">Exit</string>
 
 </resources>

@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -31,8 +32,11 @@ import java.util.List;
 public class CategoryActivity extends AppCompatActivity {
 
     TextView UserNameText;
+    SwipeRefreshLayout swipeRefresh;
+DatabaseHandler baseHandler;
 
     public List<String> list = new ArrayList<>();
+    public List<Items> categoryList = new ArrayList<>();
     List<String>pic = new ArrayList<>();
     int po;
     @Override
@@ -45,6 +49,9 @@ public class CategoryActivity extends AppCompatActivity {
         UserNameText=(TextView)findViewById(R.id.userName);
 
         UserNameText.setText(users);
+        baseHandler=new DatabaseHandler(CategoryActivity.this);
+        categoryList=baseHandler.getAllItems();
+
 
         list.add("Burger");
         list.add("Burger");
@@ -79,6 +86,17 @@ public class CategoryActivity extends AppCompatActivity {
 //
 
 
+        swipeRefresh = findViewById(R.id.swipeRefresh);
+          swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                           @Override
+                         public void onRefresh() {
+
+                               Toast.makeText(CategoryActivity.this, "refresh ..", Toast.LENGTH_SHORT).show();
+                              swipeRefresh.setRefreshing(false);
+                           }
+                       });
+
+
     }
 }
 
@@ -94,18 +112,6 @@ class CViewHolder extends RecyclerView.ViewHolder {
         categoryName = itemView.findViewById(R.id.category_text);
         categoryImage = itemView.findViewById(R.id.category_imge);
          layMain=itemView.findViewById(R.id.layMain);
-
-//        layMain.setOnClickListener(new View.OnClickListener() {
-//            @RequiresApi(api = Build.VERSION_CODES.N)
-//            @Override
-//            public void onClick(View v) {
-//              Log.e("item ...","i"+v.getId()+"-->"+);
-//
-//
-//
-//
-//            }
-//        });
 }
 }
 

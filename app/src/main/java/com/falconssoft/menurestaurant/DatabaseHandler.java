@@ -42,9 +42,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //___________________________________________________________________________________
     private static final String SETTING = "SETTING";
 
-    private static final String LANGUAGE_OPTION = "LANGUAGE_OPTION";
     private static final String IP_CONNECT = "IP_CONNECT";
-//logo ,comp name
+    private static final String RESTAURANT_NAME = "RESTAURANT_NAME";
+    private static final String RESTAURANT_LOGO = "RESTAURANT_LOGO";
+
+
+    //logo ,comp name
     //___________________________________________________________________________________
 
     public DatabaseHandler(Context context) {
@@ -76,8 +79,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_USERS);
         //___________________________________________________________________________________
         String CREATE_TABLE_SETTING = "CREATE TABLE " + SETTING + "("
-                + LANGUAGE_OPTION + " TEXT,"
-                + IP_CONNECT + " TEXT" + ")";
+                +  IP_CONNECT+ " TEXT,"
+                +  RESTAURANT_NAME+ " TEXT,"
+                + RESTAURANT_LOGO + " BLOB" + ")";
         db.execSQL(CREATE_TABLE_SETTING);
         //___________________________________________________________________________________
 
@@ -130,8 +134,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db = this.getReadableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(USER_NAME,setting.getLanguageOption() );
-        values.put(PASSWORD, setting.getIpConnection());
+        values.put(IP_CONNECT,setting.getIpConnection() );
+        values.put(RESTAURANT_NAME, setting.getRestName());
+//        values.put(RESTAURANT_LOGO,setting.getLogoRest());
+
 
         db.insert(SETTING, null, values);
         db.close();
@@ -208,8 +214,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             do {
                 Setting setting = new Setting();
 
-                setting.setLanguageOption(cursor.getString(0));
-                setting.setIpConnection(cursor.getString(1));
+                setting.setIpConnection(cursor.getString(0));
+                setting.setRestName(cursor.getString(1));
+//                setting.setLogoRest(cursor.getString(0));
+
 
                 settingsList.add(setting);
             } while (cursor.moveToNext());
@@ -258,6 +266,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return items;
     }
+
+    public void deleteAllSetting() {
+        db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + SETTING + ";");
+        db.close();
+    }
+
 
 
 
