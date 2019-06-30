@@ -1,20 +1,22 @@
 package com.falconssoft.menurestaurant.Models;
 
+import android.graphics.Bitmap;
+
 import java.sql.Blob;
 
 public class Setting {
 
     private String ipConnection;
     private String restName;
-    private Blob logoRest;
+    private Bitmap logoRest;
 
     public Setting() {
 
     }
 
-    public Setting( String ipConnection,String restName) {
+    public Setting( String ipConnection,String restName,Bitmap logoRest) {
         this.ipConnection = ipConnection;
-//        this.logoRest=logoRest;
+        this.logoRest=logoRest;
         this.restName=restName;
 
     }
@@ -27,11 +29,11 @@ public class Setting {
         this.restName = restName;
     }
 
-    public Blob getLogoRest() {
+    public Bitmap getLogoRest() {
         return logoRest;
     }
 
-    public void setLogoRest(Blob logoRest) {
+    public void setLogoRest(Bitmap logoRest) {
         this.logoRest = logoRest;
     }
 

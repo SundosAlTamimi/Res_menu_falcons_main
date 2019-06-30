@@ -137,6 +137,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(set.size()!=0){
             ipServer.setText(set.get(0).getIpConnection());
             RestName.setText(set.get(0).getRestName());
+            logoImage.setImageBitmap(set.get(0).getLogoRest());
         }else {
             Toast.makeText(this, "not data ...", Toast.LENGTH_SHORT).show();
         }
@@ -150,7 +151,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if(!ipServer.getText().toString().equals("")&&!RestName.getText().toString().equals("")){
 
                     databaseHandler.deleteAllSetting();
-                    Setting set =new Setting(ipServer.getText().toString(),RestName.getText().toString());
+                  Setting set =new Setting(ipServer.getText().toString(),RestName.getText().toString(),imageBitmap);
                     databaseHandler.addSetting(set);
 
                     Toast.makeText(LoginActivity.this, "Save", Toast.LENGTH_SHORT).show();

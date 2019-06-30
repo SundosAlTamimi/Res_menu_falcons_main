@@ -1,20 +1,22 @@
 package com.falconssoft.menurestaurant.Models;
 
+import android.graphics.Bitmap;
+
 public class Items {
 
     public String categoryName;
     public String itemName;
     public int itemBarcode;
-    public String categoryPic;
+    public Bitmap categoryPic;
     public String description;
     public double price;
-    public String ItemPic;
+    public Bitmap ItemPic;
 
     public Items() {
 
     }
 
-    public Items(String categoryName, String itemName, int itemBarcode, String categoryPic, String description, double price, String itemPic) {
+    public Items(String categoryName, String itemName, int itemBarcode, Bitmap categoryPic, String description, double price, Bitmap itemPic) {
         this.categoryName = categoryName;
         this.itemName = itemName;
         this.itemBarcode = itemBarcode;
@@ -48,11 +50,11 @@ public class Items {
         this.itemBarcode = itemBarcode;
     }
 
-    public String getCategoryPic() {
+    public Bitmap getCategoryPic() {
         return categoryPic;
     }
 
-    public void setCategoryPic(String categoryPic) {
+    public void setCategoryPic(Bitmap categoryPic) {
         this.categoryPic = categoryPic;
     }
 
@@ -72,11 +74,11 @@ public class Items {
         this.price = price;
     }
 
-    public String getItemPic() {
+    public Bitmap getItemPic() {
         return ItemPic;
     }
 
-    public void setItemPic(String itemPic) {
+    public void setItemPic(Bitmap itemPic) {
         ItemPic = itemPic;
     }
 }

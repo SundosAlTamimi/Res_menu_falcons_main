@@ -27,7 +27,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import jp.wasabeef.recyclerview.animators.ScaleInAnimator;
+
 
 
 public class ItemsActivity extends AppCompatActivity {
