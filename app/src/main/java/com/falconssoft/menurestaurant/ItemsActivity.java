@@ -27,9 +27,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-
-
-
 public class ItemsActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RequestQueue requestQueue;
@@ -71,8 +68,6 @@ public class ItemsActivity extends AppCompatActivity {
                 recyclerView.getAdapter().notifyDataSetChanged();
                 recyclerView.scheduleLayoutAnimation();
         }
-
-
     }
 
     private void loadItems() {
@@ -116,22 +111,22 @@ public class ItemsActivity extends AppCompatActivity {
 //    }
         Items items = new Items();
         items.setItemName("Salad");
-        items.setDescription("salad with some vigtable");
+        items.setDescription("salad with some vegetable");
         items.setPrice(20);
         itemList.add(items);
         Items it2 = new Items();
         it2.setItemName("Frute");
-        it2.setDescription("salad with some vigtable");
+        it2.setDescription("salad with some vegetable");
         it2.setPrice(20);
         itemList.add(it2);
         Items it3 = new Items();
         it3.setItemName("Frute");
-        it3.setDescription("salad with some vigtable");
+        it3.setDescription("salad with some vegetable");
         it3.setPrice(20);
         itemList.add(it3);
         Items it4= new Items();
         it4.setItemName("Frute");
-        it4.setDescription("salad with some vigtable");
+        it4.setDescription("salad with some vegetable");
         it4.setPrice(20);
         itemList.add(it4);
         Log.e("items", "" + items.getItemName() + items.getPrice() + items.getDescription() + "\n list" + itemList);

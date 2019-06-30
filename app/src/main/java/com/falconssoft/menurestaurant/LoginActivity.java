@@ -223,7 +223,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         Button done,exit;
 
-        done=(Button) passwordDialog.findViewById(R.id.done);
+        done=(Button) passwordDialog.findViewById(R.id.save);
         exit=(Button) passwordDialog.findViewById(R.id.exit);
 
         exit.setOnClickListener(new View.OnClickListener() {
