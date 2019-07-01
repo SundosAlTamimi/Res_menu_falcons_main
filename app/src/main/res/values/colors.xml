@@ -13,4 +13,5 @@
     <color name="black_light">#86000000</color>
     <color name="gray">#D2666565</color>
     <color name="red_item_background">#DD2424</color>
+    <color name="no_background">#34F1F1F1</color>
 </resources>

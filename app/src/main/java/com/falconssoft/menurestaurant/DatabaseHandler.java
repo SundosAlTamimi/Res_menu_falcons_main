@@ -5,12 +5,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.falconssoft.menurestaurant.Models.Items;
 import com.falconssoft.menurestaurant.Models.Setting;
 import com.falconssoft.menurestaurant.Models.Users;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,9 +45,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //___________________________________________________________________________________
     private static final String SETTING = "SETTING";
 
-    private static final String LANGUAGE_OPTION = "LANGUAGE_OPTION";
     private static final String IP_CONNECT = "IP_CONNECT";
-//logo ,comp name
+    private static final String RESTAURANT_NAME = "RESTAURANT_NAME";
+    private static final String RESTAURANT_LOGO = "RESTAURANT_LOGO";
+
+
+    //logo ,comp name
     //___________________________________________________________________________________
 
     public DatabaseHandler(Context context) {
@@ -65,8 +71,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + ITEM_BARCODE + " TEXT,"
                 + PRICE + " INTEGER,"
                 + DESCRIPTION + " TEXT,"
-                + ITEM_PICTURE + " TEXT,"
-                + CATEGORY_PICTURE + " TEXT" + ")";
+                + ITEM_PICTURE + " BLOB,"
+                + CATEGORY_PICTURE + " BLOB" + ")";
         db.execSQL(CREATE_TABLE_ITEMS);
         //___________________________________________________________________________________
 
@@ -76,8 +82,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_USERS);
         //___________________________________________________________________________________
         String CREATE_TABLE_SETTING = "CREATE TABLE " + SETTING + "("
-                + LANGUAGE_OPTION + " TEXT,"
-                + IP_CONNECT + " TEXT" + ")";
+                +  IP_CONNECT+ " TEXT,"
+                +  RESTAURANT_NAME+ " TEXT,"
+                + RESTAURANT_LOGO + " BLOB" + ")";
         db.execSQL(CREATE_TABLE_SETTING);
         //___________________________________________________________________________________
 
@@ -97,19 +104,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db = this.getReadableDatabase();
         ContentValues values = new ContentValues();
 
-//        byte[] byteImage = {};
-//        if (items.getPic() != null) {
-//            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//            items.getPic().compress(Bitmap.CompressFormat.PNG, 0, stream);
-//            byteImage = stream.toByteArray();
-//        }
+        byte[] byteImage = {};
+        byte[] byteCatImage = {};
+        if (items.getItemPic() != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            items.getItemPic().compress(Bitmap.CompressFormat.PNG, 0, stream);
+            byteImage = stream.toByteArray();
+        }
+        if (items.getCategoryPic() != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            items.getCategoryPic().compress(Bitmap.CompressFormat.PNG, 0, stream);
+            byteCatImage = stream.toByteArray();
+        }
         values.put(CATEGORY_NAME, items.getCategoryName());
         values.put(ITEM_NAME, items.getItemName());
         values.put(ITEM_BARCODE, items.getItemBarcode());
         values.put(PRICE, items.getPrice());
         values.put(DESCRIPTION, items.getDescription());
-        values.put(ITEM_PICTURE, items.getItemPic());
-        values.put(CATEGORY_PICTURE, items.getCategoryPic());
+        values.put(ITEM_PICTURE, byteImage);
+        values.put(CATEGORY_PICTURE, byteCatImage);
 
         db.insert(ITEMS, null, values);
         db.close();
@@ -130,8 +143,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db = this.getReadableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(USER_NAME,setting.getLanguageOption() );
-        values.put(PASSWORD, setting.getIpConnection());
+        byte[] byteImage = {};
+        if (setting.getLogoRest() != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            setting.getLogoRest().compress(Bitmap.CompressFormat.PNG, 0, stream);
+            byteImage = stream.toByteArray();
+        }
+
+
+        values.put(IP_CONNECT,setting.getIpConnection() );
+        values.put(RESTAURANT_NAME, setting.getRestName());
+        values.put(RESTAURANT_LOGO,byteImage);
+
 
         db.insert(SETTING, null, values);
         db.close();
@@ -155,13 +178,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 item.setItemBarcode(Integer.parseInt(cursor.getString(2)));
                 item.setPrice(Double.parseDouble(cursor.getString(3)));
                 item.setDescription(cursor.getString(4));
-                try {
-                    item.setItemPic(cursor.getString(5));
-                    item.setCategoryPic(cursor.getString(6));
-                }catch (OutOfMemoryError e) {
-                    e.getMessage();
-                    Log.e("have error ..","1==out of memory ");
-                }
+
+                if (cursor.getBlob(5).length == 0)
+                    item.setItemPic(null);
+                else
+                    item.setItemPic(BitmapFactory.decodeByteArray(cursor.getBlob(5), 0, cursor.getBlob(5).length));
+
+
+                if (cursor.getBlob(6).length == 0)
+                    item.setCategoryPic(null);
+                else
+                    item.setCategoryPic(BitmapFactory.decodeByteArray(cursor.getBlob(6), 0, cursor.getBlob(6).length));
+
 //                if (cursor.getBlob(20).length == 0)
 //                    item.setPic(null);
 //                else
@@ -208,8 +236,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             do {
                 Setting setting = new Setting();
 
-                setting.setLanguageOption(cursor.getString(0));
-                setting.setIpConnection(cursor.getString(1));
+                setting.setIpConnection(cursor.getString(0));
+                setting.setRestName(cursor.getString(1));
+
+
+                if (cursor.getBlob(2).length == 0)
+                    setting.setLogoRest(null);
+                else
+                    setting.setLogoRest(BitmapFactory.decodeByteArray(cursor.getBlob(2), 0, cursor.getBlob(2).length));
+
 
                 settingsList.add(setting);
             } while (cursor.moveToNext());
@@ -239,13 +274,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 item.setItemBarcode(Integer.parseInt(cursor.getString(2)));
                 item.setPrice(Double.parseDouble(cursor.getString(3)));
                 item.setDescription(cursor.getString(4));
-                try {
-                    item.setItemPic(cursor.getString(5));
-                    item.setCategoryPic(cursor.getString(6));
-                }catch (OutOfMemoryError e) {
-                    e.getMessage();
-                    Log.e("have error ..","1==out of memory ");
-                }
+
+                if (cursor.getBlob(5).length == 0)
+                    item.setItemPic(null);
+                else
+                    item.setItemPic(BitmapFactory.decodeByteArray(cursor.getBlob(5), 0, cursor.getBlob(5).length));
+
+
+                if (cursor.getBlob(6).length == 0)
+                    item.setCategoryPic(null);
+                else
+                    item.setCategoryPic(BitmapFactory.decodeByteArray(cursor.getBlob(6), 0, cursor.getBlob(6).length));
+
 //                if (cursor.getBlob(20).length == 0)
 //                    item.setPic(null);
 //                else
@@ -258,6 +298,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return items;
     }
+
+    public void deleteAllSetting() {
+        db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + SETTING + ";");
+        db.close();
+    }
+
 
 
 

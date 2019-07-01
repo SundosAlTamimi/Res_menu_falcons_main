@@ -26,7 +26,6 @@
         android:textSize="50dp"
         android:textStyle="bold"
         app:fontFamily="cursive" />
-
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:id="@+id/recyclerview_item_list"
