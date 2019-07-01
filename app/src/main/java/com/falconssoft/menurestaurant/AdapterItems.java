@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.falconssoft.menurestaurant.Models.Items;
 import com.falconssoft.menurestaurant.R;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
 
@@ -52,12 +53,13 @@ public class AdapterItems extends RecyclerView.Adapter<AdapterItems.ItemsViewHol
 
     public class ItemsViewHolder extends RecyclerView.ViewHolder {
         TextView ItemName, Price, Dscription;
-
+        CircularImageView circularImageView ;
         public ItemsViewHolder(@NonNull View itemView) {
             super(itemView);
             ItemName = itemView.findViewById(R.id.textView_Nmae);
             Price = itemView.findViewById(R.id.text_price);
             Dscription = itemView.findViewById(R.id.textView_description);
+         //   circularImageView =itemView.findViewById(R.id.circular_image);
             Log.e("ItemsViewHolder", "y");
         }
     }

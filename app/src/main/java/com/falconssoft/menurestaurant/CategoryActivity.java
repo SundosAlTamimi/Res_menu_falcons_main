@@ -28,6 +28,8 @@ import com.falconssoft.menurestaurant.Models.Items;
 import java.util.ArrayList;
 import java.util.List;
 
+import maes.tech.intentanim.CustomIntent;
+
 public class CategoryActivity extends AppCompatActivity {
 
     TextView UserNameText;
@@ -145,6 +147,14 @@ DatabaseHandler db;
                 Intent itemIntent=new Intent(context,ItemsActivity.class);
                 itemIntent.putExtra("categoryName",list.get(i));
                 context.startActivity(itemIntent);
+                CustomIntent.customType(context,"left-to-right");
+             //   bottom-to-up "left-to-right"
+                /**left-to-right
+                 *right-to-left
+                 *bottom-to-up
+                 *up-to-bottom
+                 *fadein-to-fadeout
+                 *rotateout-to-rotatein*/
             }
         });
 

@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.falconssoft.menurestaurant.Models.Items;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,6 +29,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import jp.wasabeef.recyclerview.animators.ScaleInAnimator;
+import maes.tech.intentanim.CustomIntent;
 
 
 public class ItemsActivity extends AppCompatActivity {
@@ -136,5 +138,33 @@ public class ItemsActivity extends AppCompatActivity {
         itemList.add(it4);
         Log.e("items", "" + items.getItemName() + items.getPrice() + items.getDescription() + "\n list" + itemList);
     }
+
+
+//        CustomIntent.customType(context,"right-to-left");
+
 }
+
+// Set Circle color for transparent image
+//circularImageView.setCircleColor(Color.WHITE);
+//// Set Border
+//        circularImageView.setBorderColor(Color.RED);
+//        circularImageView.setBorderWidth(10);
+//// Add Shadow with default param
+//        circularImageView.setShadowEnable(true);
+//// or with custom param
+//        circularImageView.setShadowRadius(15);
+//        circularImageView.setShadowColor(Color.RED);
+//        circularImageView.setBackgroundColor(Color.RED);
+//        circularImageView.setShadowGravity(CircularImageView.ShadowGravity.CENTER);
+//****************
+//<com.mikhaellopez.circularimageview.CircularImageView
+//        android:id="@+id/circular_image"
+//        android:layout_width="150dp"
+//        android:layout_height="150dp"
+//        android:src="@drawable/checken"
+//        app:civ_border_color="#3f51b5"
+//        app:civ_border_width="1dp"
+//        app:civ_shadow="true"
+//        app:civ_shadow_radius="10"
+//        app:civ_shadow_color="#3f51b5"/>
 
