@@ -17,5 +17,6 @@
     <string name="groupname">Group Name</string>
     <string name="restaurant_name">Restaurant Name :</string>
     <string name="ip_server">IP Server :</string>
+    <string name="done">Done</string>
 
 </resources>

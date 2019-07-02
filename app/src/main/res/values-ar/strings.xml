@@ -14,4 +14,10 @@
     <string name="category">الفئات ...</string>
     <string name="save">حفظ</string>
     <string name="exit">خروج</string>
+
+    <string name="groupname">اسم الفئة</string>
+    <string name="restaurant_name">اسم المطعم :</string>
+    <string name="ip_server">IP Server :</string>
+    <string name="done">حسنا</string>
+
 </resources>
