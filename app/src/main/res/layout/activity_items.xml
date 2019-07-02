@@ -21,7 +21,7 @@
         android:layout_marginLeft="100dp"
         android:layout_marginTop="50dp"
         android:gravity="center"
-        android:text="@string/GroupName"
+        android:text="@string/groupname"
         android:textColor="@color/white_dark"
         android:textSize="50dp"
         android:textStyle="bold"

@@ -14,5 +14,8 @@
     <string name="category">Category ...</string>
     <string name="save">save</string>
     <string name="exit">Exit</string>
+    <string name="groupname">Group Name</string>
+    <string name="restaurant_name">Restaurant Name :</string>
+    <string name="ip_server">IP Server :</string>
 
 </resources>

@@ -12,12 +12,23 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
+        <!--<ImageView-->
+            <!--android:id="@+id/logo"-->
+            <!--android:layout_width="160dp"-->
+            <!--android:layout_height="160dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:background="@drawable/logo_transparent" />-->
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/logo"
             android:layout_width="160dp"
             android:layout_height="160dp"
-            android:layout_gravity="center"
-            android:background="@drawable/logo_transparent" />
+            android:layout_marginStart="156dp"
+            android:layout_marginLeft="156dp"
+            android:src="@drawable/logo_transparent"
+            app:civ_border_color="@color/red"
+            app:civ_border_width="2dp" />
+
+
 
         <TableLayout
             android:layout_width="match_parent"
@@ -34,7 +45,7 @@
                     android:id="@+id/ip_text"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:text="IP Server :"
+                    android:text="@string/ip_server"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -55,7 +66,7 @@
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:text="Restaurant Name : "
+                    android:text="@string/restaurant_name"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
