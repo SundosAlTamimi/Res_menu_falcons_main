@@ -1,5 +1,4 @@
 package com.falconssoft.menurestaurant;
-
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.falconssoft.menurestaurant.models.Items;
+import com.falconssoft.menurestaurant.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,13 +53,15 @@ public class AdapterItems extends RecyclerView.Adapter<AdapterItems.ItemsViewHol
 
     public class ItemsViewHolder extends RecyclerView.ViewHolder {
         TextView ItemName, Price, Dscription;
-
+//        CircularImageView circularImageView ;
         public ItemsViewHolder(@NonNull View itemView) {
             super(itemView);
             ItemName = itemView.findViewById(R.id.textView_Nmae);
             Price = itemView.findViewById(R.id.text_price);
             Dscription = itemView.findViewById(R.id.textView_description);
 //            Log.e("ItemsViewHolder", "y");
+         //   circularImageView =itemView.findViewById(R.id.circular_image);
+            Log.e("ItemsViewHolder", "y");
         }
     }
 
