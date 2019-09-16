@@ -1,4 +1,4 @@
-package com.falconssoft.menurestaurant.Models;
+package com.falconssoft.menurestaurant.models;
 
 import android.graphics.Bitmap;
 
@@ -6,17 +6,32 @@ public class Items {
 
     public String categoryName;
     public String itemName;
-    public int itemBarcode;
+    public String itemBarcode;
     public Bitmap categoryPic;
     public String description;
-    public double price;
+    public double price; // F_D
     public Bitmap ItemPic;
 
     public Items() {
 
     }
 
-    public Items(String categoryName, String itemName, int itemBarcode, Bitmap categoryPic, String description, double price, Bitmap itemPic) {
+//    "ItemOCode": "HM 4",
+//            "ItemNameA": "HMR CaI?aiOi (2.44*1.22*0.008)",
+//            "ItemNameE": "HMR CaI?aiOi (2.44*1.22*0.008)",
+//            "ItemG": "CaCIOCE",
+//            "ITEM_DESCRIPTION": null,
+//            "F_D": "0"
+
+    public Items(String itemBarcode, String itemName, String categoryName, String description, double price) {
+        this.itemBarcode = itemBarcode;
+        this.itemName = itemName;
+        this.categoryName = categoryName;
+        this.description = description;
+        this.price = price;
+    }
+
+    public Items(String categoryName, String itemName, String itemBarcode, Bitmap categoryPic, String description, double price, Bitmap itemPic) {
         this.categoryName = categoryName;
         this.itemName = itemName;
         this.itemBarcode = itemBarcode;
@@ -42,11 +57,11 @@ public class Items {
         this.itemName = itemName;
     }
 
-    public int getItemBarcode() {
+    public String getItemBarcode() {
         return itemBarcode;
     }
 
-    public void setItemBarcode(int itemBarcode) {
+    public void setItemBarcode(String itemBarcode) {
         this.itemBarcode = itemBarcode;
     }
 
@@ -66,8 +81,8 @@ public class Items {
         this.description = description;
     }
 
-    public String getPrice() {
-        return price+"$";
+    public double getPrice() {
+        return price;
     }
 
     public void setPrice(double price) {

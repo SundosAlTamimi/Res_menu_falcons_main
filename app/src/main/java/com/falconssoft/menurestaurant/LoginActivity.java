@@ -12,30 +12,29 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.falconssoft.menurestaurant.Models.Setting;
-import com.falconssoft.menurestaurant.Models.Users;
+import com.falconssoft.menurestaurant.models.Setting;
+import com.falconssoft.menurestaurant.models.Users;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import static com.falconssoft.menurestaurant.MainSetting.usersList;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private ImageView settingOfSystem, logoImage;
     private EditText username, password;
     private TextView english, arabic;
     private Button login;
-    private DatabaseHandler databaseHandler;
-    private List<Users> users = new ArrayList<>();
+    private Bitmap imageBitmap = null;
+//    private List<Users> users = new ArrayList<>();
     private MenuPresenter presenter;
-    ImageView settingOfSystem , logoImage;
-    Bitmap imageBitmap = null;
+    private DatabaseHandler databaseHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +42,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         databaseHandler = new DatabaseHandler(this);
-        presenter = new MenuPresenter(this);
-        presenter.getUsersData();
+        presenter = new MenuPresenter(databaseHandler,this);
+        presenter.getCategoriesAndItems();
 
         username = findViewById(R.id.login_username);
         password = findViewById(R.id.login_password);
         english = findViewById(R.id.login_language_english);
         arabic = findViewById(R.id.login_language_arabic);
         login = findViewById(R.id.login_button);
-        settingOfSystem=findViewById(R.id.setting);
+        settingOfSystem = findViewById(R.id.setting);
 
         login.setOnClickListener(this);
         english.setOnClickListener(this);
@@ -65,29 +64,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         switch (v.getId()) {
             case R.id.login_button:
-                users = databaseHandler.getAllUSER();
+//                users = databaseHandler.getAllUSER();
                 boolean found = false;
                 String usernameText = username.getText().toString();
                 String passwordText = password.getText().toString();
                 if (!usernameText.equals(null) && !passwordText.equals(null)) {
-                    for (int i = 0; i < users.size(); i++)
-                        if (usernameText .equals( users.get(i).getUserName()))
-                            if (passwordText.equals(users.get(i).getUserPassword())) {
+                    for (int i = 0; i < usersList.size(); i++)
+                        if (usernameText.equals(usersList.get(i).getUserName()))
+                            if (passwordText.equals(usersList.get(i).getUserPassword())) {
                                 found = true;
                                 Intent categoryIntent = new Intent(LoginActivity.this, CategoryActivity.class);
-                                categoryIntent.putExtra("userName",usernameText);
+                                categoryIntent.putExtra("userName", usernameText);
                                 startActivity(categoryIntent);
                             }
 
                     if (found == false) {
-                        if (usernameText.equals("admin")){
+                        if (usernameText.equals("admin")) {
                             if (passwordText.equals("admin")) {
                                 Intent categoryIntent = new Intent(LoginActivity.this, CategoryActivity.class);
                                 categoryIntent.putExtra("userName", usernameText);
                                 startActivity(categoryIntent);
-                            }else { Toast.makeText(this, "Wrong in username or password!", Toast.LENGTH_SHORT).show();}
-                        }else{
-                        Toast.makeText(this, "Wrong in username or password!", Toast.LENGTH_SHORT).show();}
+                            } else {
+                                Toast.makeText(this, "Wrong in username or password!", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(this, "Wrong in username or password!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 } else {
                     username.setError("Required field!");
@@ -115,49 +117,49 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    void SettingDialog(){
+    void SettingDialog() {
 
-        final Dialog settingDialog= new Dialog(LoginActivity.this);
+        final Dialog settingDialog = new Dialog(LoginActivity.this);
         settingDialog.setCancelable(false);
         settingDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         settingDialog.setCanceledOnTouchOutside(false);
         settingDialog.setContentView(R.layout.setting_dialog);
 
-        final EditText ipServer,RestName;
-        Button save,exit;
+        final EditText ipServer, RestName;
+        Button save, exit;
 
-        ipServer=(EditText)settingDialog.findViewById(R.id.ip_edit);
-        RestName=(EditText)settingDialog.findViewById(R.id.restName);
-        logoImage=(ImageView)settingDialog.findViewById(R.id.logo);
+        ipServer = (EditText) settingDialog.findViewById(R.id.ip_edit);
+        RestName = (EditText) settingDialog.findViewById(R.id.restName);
+        logoImage = (ImageView) settingDialog.findViewById(R.id.logo);
 
-        List<Setting>set=new ArrayList<>();
+        List<Setting> set = new ArrayList<>();
 
-        set=databaseHandler.getAllSetting();
+        set = databaseHandler.getAllSetting();
 
-        if(set.size()!=0){
+        if (set.size() != 0) {
             ipServer.setText(set.get(0).getIpConnection());
             RestName.setText(set.get(0).getRestName());
             logoImage.setImageBitmap(set.get(0).getLogoRest());
-        }else {
+        } else {
             Toast.makeText(this, "not data ...", Toast.LENGTH_SHORT).show();
         }
 
-        save=(Button)settingDialog.findViewById(R.id.save);
-        exit=(Button)settingDialog.findViewById(R.id.exit);
+        save = (Button) settingDialog.findViewById(R.id.save);
+        exit = (Button) settingDialog.findViewById(R.id.exit);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!ipServer.getText().toString().equals("")&&!RestName.getText().toString().equals("")){
+                if (!ipServer.getText().toString().equals("") && !RestName.getText().toString().equals("")) {
 
                     databaseHandler.deleteAllSetting();
-                  Setting set =new Setting(ipServer.getText().toString(),RestName.getText().toString(),imageBitmap);
+                    Setting set = new Setting(ipServer.getText().toString(), RestName.getText().toString(), imageBitmap);
                     databaseHandler.addSetting(set);
 
                     Toast.makeText(LoginActivity.this, "Save", Toast.LENGTH_SHORT).show();
                     settingDialog.dismiss();
 
-                }else{
+                } else {
                     Toast.makeText(LoginActivity.this, "Please fill all Data ", Toast.LENGTH_SHORT).show();
                 }
 
@@ -211,20 +213,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-    void SettingPassword(){
+    void SettingPassword() {
 
-        final Dialog passwordDialog= new Dialog(LoginActivity.this);
+        final Dialog passwordDialog = new Dialog(LoginActivity.this);
         passwordDialog.setCancelable(false);
         passwordDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         passwordDialog.setCanceledOnTouchOutside(false);
         passwordDialog.setContentView(R.layout.setting_password);
 
-        final EditText password=(EditText)passwordDialog.findViewById(R.id.pass_setting);
+        final EditText password = (EditText) passwordDialog.findViewById(R.id.pass_setting);
 
-        Button done,exit;
+        Button done, exit;
 
-        done=(Button) passwordDialog.findViewById(R.id.save);
-        exit=(Button) passwordDialog.findViewById(R.id.exit);
+        done = (Button) passwordDialog.findViewById(R.id.save);
+        exit = (Button) passwordDialog.findViewById(R.id.exit);
 
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -240,18 +242,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onClick(View v) {
 
-                if(!password.getText().toString().equals("")){
-                    if(password.getText().toString().equals("admin30")){
+                if (!password.getText().toString().equals("")) {
+                    if (password.getText().toString().equals("admin30")) {
 
                         SettingDialog();
                         passwordDialog.dismiss();
 
-                    }else{
+                    } else {
                         Toast.makeText(LoginActivity.this, "The Password is incorrect", Toast.LENGTH_SHORT).show();
                     }
 
 
-                }else{
+                } else {
 
                     Toast.makeText(LoginActivity.this, "please enter the password ", Toast.LENGTH_SHORT).show();
 
@@ -261,7 +263,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         });
 
 
-    passwordDialog.show();
+        passwordDialog.show();
     }
 
 

@@ -1,4 +1,5 @@
 package com.falconssoft.menurestaurant;
+
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,17 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.falconssoft.menurestaurant.Models.Items;
-import com.falconssoft.menurestaurant.R;
+import com.falconssoft.menurestaurant.models.Items;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AdapterItems extends RecyclerView.Adapter<AdapterItems.ItemsViewHolder> {
     private Context context;
-    private ArrayList<Items> items;
+    private List<Items> items;
     LayoutInflater layout;
 
-    public AdapterItems(Context context, ArrayList<Items> items) {
+    public AdapterItems(Context context, List<Items> items) {
         this.context = context;
         this.items = items;
         layout = LayoutInflater.from(context);
@@ -37,11 +38,11 @@ public class AdapterItems extends RecyclerView.Adapter<AdapterItems.ItemsViewHol
     @Override
     public void onBindViewHolder(@NonNull AdapterItems.ItemsViewHolder itemsViewHolder, int i) {
 
-        Items itemModel=items.get(i);
-        itemsViewHolder.ItemName.setText(itemModel.getItemName()+"");
-        itemsViewHolder.Dscription.setText(itemModel.getDescription()+"");
-        itemsViewHolder.Price.setText(itemModel.getPrice()+"");
-        Log.e("Item Bind",""+itemModel.getItemName());
+        Items itemModel = items.get(i);
+        itemsViewHolder.ItemName.setText(itemModel.getItemName() + "");
+        itemsViewHolder.Dscription.setText(itemModel.getDescription() + "");
+        itemsViewHolder.Price.setText(itemModel.getPrice() + "");
+//        Log.e("Item Bind", "" + itemModel.getItemName());
     }
 
 
@@ -58,7 +59,7 @@ public class AdapterItems extends RecyclerView.Adapter<AdapterItems.ItemsViewHol
             ItemName = itemView.findViewById(R.id.textView_Nmae);
             Price = itemView.findViewById(R.id.text_price);
             Dscription = itemView.findViewById(R.id.textView_description);
-            Log.e("ItemsViewHolder", "y");
+//            Log.e("ItemsViewHolder", "y");
         }
     }
 

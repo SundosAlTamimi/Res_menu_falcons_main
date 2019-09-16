@@ -1,80 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android = "http://schemas.android.com/apk/res/android"
-    xmlns:app = "http://schemas.android.com/apk/res-auto"
-    xmlns:tools = "http://schemas.android.com/tools"
-    android:id = "@+id/swipeRefresh"
-    android:layout_width = "match_parent"
-    android:layout_height = "match_parent">
-<LinearLayout
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipeRefresh"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/dfood"
-    android:orientation="vertical"
-    android:layoutDirection="ltr">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black_light"
+        android:background="@drawable/dfood"
+        android:layoutDirection="ltr"
         android:orientation="vertical">
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
-
-        <ImageView
-            android:id="@+id/imageButton"
-            android:layout_width="40dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/user" />
-
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:gravity="bottom"
-            android:text="@string/username"
-            android:textColor="@color/white_dark" />
-
-    </TableRow>
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="174dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="0dp"
-        android:gravity="center"
-        android:text="@string/category"
-        android:textColor="@color/white_dark"
-        android:textSize="70dp"
-        android:textStyle="bold"
-        app:fontFamily="cursive" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/categoryRecycler"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="550dp"
-            android:layout_gravity="center" />
+            android:layout_height="match_parent"
+            android:background="@color/black_light"
+            android:orientation="vertical">
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="30dp" >
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:gravity="center"
-            android:text="@string/menu"
-            android:textColor="@color/white_dark"
-            android:textSize="20sp"
-            android:fontFamily="cursive"/>
-    </TableRow>
+                <ImageView
+                    android:id="@+id/imageButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/ic_person_red_24dp" />
+
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:gravity="bottom"
+                    android:text="@string/username"
+                    android:textColor="@color/white_dark" />
+
+            </TableRow>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="174dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:text="@string/category"
+                android:textColor="@color/white_dark"
+                android:textSize="70dp"
+                app:fontFamily="cursive" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/categoryRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="550dp"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
 
     </LinearLayout>
-</LinearLayout>
+
 </android.support.v4.widget.SwipeRefreshLayout>

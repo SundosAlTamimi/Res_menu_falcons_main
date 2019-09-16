@@ -9,8 +9,8 @@
 
     <LinearLayout
         android:id="@+id/layMain"
-        android:layout_width="320dp"
-        android:layout_height="450dp"
+        android:layout_width="360dp"
+        android:layout_height="480dp"
         android:background="@drawable/back_layout"
         android:orientation="horizontal">
 
@@ -33,14 +33,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/back_2_layout"
-                android:fontFamily="cursive"
                 android:gravity="center"
                 android:text="Burger"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="60dp"
                 android:padding="8dp"
                 android:textColor="@color/white_dark"
-                android:textSize="60sp"
-                android:textStyle="bold" />
+                android:textSize="40sp"
+                />
 
 
         </LinearLayout>
