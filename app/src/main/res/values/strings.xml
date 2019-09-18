@@ -17,9 +17,15 @@
     <string name="exit">Exit</string>
     <string name="groupname">Group Name</string>
     <string name="restaurant_name">Restaurant Name :</string>
-    <string name="ip_server">IP Server :</string>
+    <string name="ip_address">IP Server :</string>
     <string name="done">Done</string>
 
     <string name="change_image">Change Image</string>
+    <string name="show_password">Show Password</string>
+    <string name="hide_password">Hide Password</string>
+
+    <string name="wrong_username">Username is wrong!</string>
+    <string name="wrong_password">Password is wrong!</string>
+    <string name="required_field">Required Field!</string>
 
 </resources>

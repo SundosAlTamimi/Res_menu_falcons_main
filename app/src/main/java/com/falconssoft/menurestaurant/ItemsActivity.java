@@ -11,12 +11,18 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.TextView;
 
+import com.falconssoft.menurestaurant.models.Items;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.falconssoft.menurestaurant.MainSetting.itemsList;
 
 public class ItemsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TextView textViewCategoryName;
     private String categoryName;
+    private List<Items> filteredList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +39,18 @@ public class ItemsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         runAnimation(recyclerView, 0);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        AdapterItems adapter = new AdapterItems(this, itemsList);
+
+        chooseItemsAccordingCategory();
+
+    }
+
+    void chooseItemsAccordingCategory(){
+        for (int i = 0; i< itemsList.size();i++){
+            if (itemsList.get(i).categoryName.equals(categoryName))
+                filteredList.add(itemsList.get(i));
+        }
+
+        AdapterItems adapter = new AdapterItems(this, filteredList);
         recyclerView.setAdapter(adapter);
     }
 

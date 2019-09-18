@@ -13,6 +13,43 @@
         android:layout_height="match_parent"
         android:background="@drawable/background_style">
 
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="200dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginEnd="200dp"
+            android:layout_marginRight="200dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/red"
+            android:drawableStart="@drawable/ic_lock_open_red_24dp"
+            android:drawableLeft="@drawable/ic_lock_open_red_24dp"
+            android:padding="10dp"
+            android:text="@string/login"
+            android:textAllCaps="false"
+            android:textColor="@color/white_dark"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_checkBox"
+            app:layout_constraintVertical_bias="0.144" />
+
+        <CheckBox
+            android:id="@+id/login_checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hide_password"
+            android:textColor="@color/white_dark"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.349"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_password" />
+
         <EditText
             android:id="@+id/login_username"
             android:layout_width="0dp"
@@ -33,7 +70,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/compName"/>
+            app:layout_constraintTop_toBottomOf="@+id/compName" />
 
         <EditText
             android:id="@+id/login_password"
@@ -48,7 +85,6 @@
             android:drawableStart="@drawable/ic_lock_red_24dp"
             android:drawableLeft="@drawable/ic_lock_red_24dp"
             android:drawablePadding="10dp"
-            android:inputType="textPassword"
             android:hint="@string/password"
             android:padding="10dp"
             android:textSize="20sp"
@@ -57,89 +93,35 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_username" />
 
-        <Button
-            android:id="@+id/login_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="200dp"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="200dp"
-            android:layout_marginRight="200dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/red"
-            android:drawableStart="@drawable/ic_lock_open_red_24dp"
-            android:drawableLeft="@drawable/ic_lock_open_red_24dp"
-            android:padding="10dp"
-            android:text="@string/login"
-            android:textAllCaps="false"
-            android:textColor="@color/white_dark"
-            android:textSize="25sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <ImageView
+            android:id="@+id/setting"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/ic_settings_white_24dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_password"
-            app:layout_constraintVertical_bias="0.092" />
-
-    <TextView
-        android:id="@+id/login_language_english"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:padding="10dp"
-        android:text="@string/en"
-        android:textSize="20sp"
-        android:textColor="@color/white_dark"
-        android:background="@color/red"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/login_language_arabic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@color/red"
-        android:padding="10dp"
-        android:text="@string/ar"
-        android:textSize="20sp"
-        android:textColor="@color/white_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/login_language_english"
-        app:layout_constraintTop_toTopOf="parent" />
-
-        <!--<ImageView-->
-            <!--android:id="@+id/imageView"-->
-            <!--android:layout_width="100dp"-->
-            <!--android:layout_height="100dp"-->
-            <!--android:layout_marginStart="156dp"-->
-            <!--android:layout_marginLeft="156dp"-->
-            <!--android:layout_marginTop="232dp"-->
-            <!--app:layout_constraintStart_toStartOf="parent"-->
-            <!--app:layout_constraintTop_toTopOf="parent"-->
-            <!--app:srcCompat="@drawable/logo_transparent" />-->
-
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/imageLogo"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="156dp"
-            android:layout_marginLeft="156dp"
-            android:layout_marginTop="232dp"
-            android:background="@drawable/logo_transparent"
-            app:civ_border_color="@color/white_dark"
-            app:civ_border_width="2dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.983"
+            app:layout_constraintStart_toEndOf="@+id/login_language_arabic"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/login_language_english"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/red"
+            android:padding="10dp"
+            android:text="@string/en"
+            android:textColor="@color/white_dark"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/compName"
@@ -160,21 +142,37 @@
             app:layout_constraintStart_toEndOf="@+id/imageLogo"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <ImageView
-            android:id="@+id/setting"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
+        <TextView
+            android:id="@+id/login_language_arabic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
+            android:background="@color/red"
+            android:padding="10dp"
+            android:text="@string/ar"
+            android:textColor="@color/white_dark"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.983"
-            app:layout_constraintStart_toEndOf="@+id/login_language_arabic"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/ic_settings_white_24dp" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/login_language_english"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/imageLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="156dp"
+            android:layout_marginLeft="156dp"
+            android:layout_marginTop="232dp"
+            android:background="@drawable/logo_transparent"
+            app:civ_border_color="@color/white_dark"
+            app:civ_border_width="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
