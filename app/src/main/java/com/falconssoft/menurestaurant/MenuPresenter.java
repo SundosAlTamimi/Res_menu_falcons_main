@@ -132,11 +132,15 @@ public class MenuPresenter implements Response.Listener<JSONObject>, Response.Er
     class ResponsesOfCategoriesAndItems implements Response.Listener<JSONObject>, Response.ErrorListener {
         @Override
         public void onErrorResponse(VolleyError error) {
+            definValue = 1;
             Log.e("presenter: ", "category & items: " + error);
+            new SaveToDatabase().execute();
+
         }
 
         @Override
         public void onResponse(JSONObject response) {
+            definValue = 0;
             try {
 
                 itemsList.clear();
@@ -192,12 +196,17 @@ public class MenuPresenter implements Response.Listener<JSONObject>, Response.Er
 
         @Override
         protected String doInBackground(String... strings) {
-            for (int i = 0; i < itemsList.size(); i++) {
-                databaseHandler.addItem(itemsList.get(i));
-            }
+            if (definValue == 0) {
+                for (int i = 0; i < itemsList.size(); i++) {
+                    databaseHandler.addItem(itemsList.get(i));
+                }
 
-            for (int i = 0; i < usersList.size(); i++) {
-                databaseHandler.addUser(usersList.get(i));
+                for (int i = 0; i < usersList.size(); i++) {
+                    databaseHandler.addUser(usersList.get(i));
+                }
+            }else  if (definValue == 1){
+                categoryList = databaseHandler.getAllCategories();
+                itemsList = databaseHandler.getAllItems();
             }
             return "done";
         }

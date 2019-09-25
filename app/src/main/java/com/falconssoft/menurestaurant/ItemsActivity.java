@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.falconssoft.menurestaurant.models.Items;
 
@@ -29,9 +32,9 @@ public class ItemsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items);
 
+        textViewCategoryName = (TextView) findViewById(R.id.group_name);
         Intent intent = getIntent();
         categoryName = intent.getStringExtra("categoryName");
-        textViewCategoryName = (TextView) findViewById(R.id.group_name);
         textViewCategoryName.setText(categoryName);
 
         recyclerView = findViewById(R.id.recyclerview_item_list);
@@ -41,12 +44,11 @@ public class ItemsActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         chooseItemsAccordingCategory();
-
     }
 
     void chooseItemsAccordingCategory(){
         for (int i = 0; i< itemsList.size();i++){
-            if (itemsList.get(i).categoryName.equals(categoryName))
+            if (itemsList.get(i).getCategoryName().equals(categoryName))
                 filteredList.add(itemsList.get(i));
         }
 
@@ -59,7 +61,7 @@ public class ItemsActivity extends AppCompatActivity {
         LayoutAnimationController controller = null;
         if (type == 0) {
             controller = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_filldown);
-            AdapterItems adapter = new AdapterItems(context, itemsList);
+            AdapterItems adapter = new AdapterItems(this, itemsList);
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutAnimation(controller);
             recyclerView.getAdapter().notifyDataSetChanged();

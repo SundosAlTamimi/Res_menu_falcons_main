@@ -1,27 +1,24 @@
 package com.falconssoft.menurestaurant;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.falconssoft.menurestaurant.models.Items;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterItems extends RecyclerView.Adapter<AdapterItems.ItemsViewHolder> {
-    private Context context;
+public class AdapterItems extends RecyclerView.Adapter<ItemsViewHolder> {
+    private ItemsActivity itemsActivity;
     private LayoutInflater layout;
     private List<Items> list = new ArrayList<>();
 
-    public AdapterItems(Context context, List<Items> list) {
-        this.context = context;
-        layout = LayoutInflater.from(context);
+    public AdapterItems(ItemsActivity itemsActivity, List<Items> list) {
+        this.itemsActivity = itemsActivity;
+        layout = LayoutInflater.from(itemsActivity);
         this.list = list;
     }
 
@@ -33,38 +30,41 @@ public class AdapterItems extends RecyclerView.Adapter<AdapterItems.ItemsViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterItems.ItemsViewHolder itemsViewHolder, int i) {
-
+    public void onBindViewHolder(@NonNull final ItemsViewHolder itemsViewHolder, final int i) {
 //        Items itemModel = items.get(i);
-        itemsViewHolder.ItemName.setText(list.get(i).getItemName() + "");
-        itemsViewHolder.Price.setText(list.get(i).getPrice() + "");
+
+        itemsViewHolder.itemName.setText(list.get(i).getItemName() + "");
+        itemsViewHolder.price.setText(list.get(i).getPrice() + "");
         if (list.get(i).getDescription().equals("null") || list.get(i).getDescription().equals(""))
-            itemsViewHolder.Description.setText("No description");
+            itemsViewHolder.description.setText("No description");
         else
-            itemsViewHolder.Description.setText(list.get(i).getDescription() + "");
+            itemsViewHolder.description.setText(list.get(i).getDescription() + "");
+
 //        Log.e("Item Bind", "" + itemModel.getItemName());
     }
-
 
     @Override
     public int getItemCount() {
         return list.size();
     }
 
-    public class ItemsViewHolder extends RecyclerView.ViewHolder {
-        TextView ItemName, Price, Description;
 
-        //        CircularImageView circularImageView ;
-        public ItemsViewHolder(@NonNull View itemView) {
-            super(itemView);
-            ItemName = itemView.findViewById(R.id.textView_Nmae);
-            Price = itemView.findViewById(R.id.text_price);
-            Description = itemView.findViewById(R.id.textView_description);
-//            Log.e("ItemsViewHolder", "y");
-            //   circularImageView =itemView.findViewById(R.id.circular_image);
-            Log.e("ItemsViewHolder", "y");
-        }
-    }
-
+//    @Override
+//    public void onClick(View v) {
+//        switch (v.getId()) {
+//            case R.id.item_row_increment:
+//                quantityValue++;
+//                itemsViewHolder.quantity.setText("" + quantityValue);
+//                break;
+//            case R.id.item_row_decrement:
+//                if (quantityValue > 1)
+//                    quantityValue--;
+//                else
+//                    Toast.makeText(itemView.getContext(), "Quantity can't be less than 1!", Toast.LENGTH_SHORT).show();
+//                quantity.setText("" + quantityValue);
+//                break;
+//        }
+//
+//    }
 }
 

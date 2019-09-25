@@ -8,8 +8,8 @@ import java.util.List;
 
 public class MainSetting {
 
-    public static String  userName="noWaiter";
-    public static String  userPassword="0";
+    public static String userName = "noWaiter";
+    public static String userPassword = "0";
 
     public static List<Users> usersList = new ArrayList<>();
     public static List<String> categoryList = new ArrayList<>();

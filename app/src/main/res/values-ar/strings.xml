@@ -27,4 +27,9 @@
     <string name="wrong_username">خطا في اسم المستخدم!</string>
     <string name="wrong_password">خطا في كلمة المرور!</string>
     <string name="required_field">حقل اجباري!</string>
+    <string name="quantity">الكمية</string>
+    <string name="piece">قطعة</string>
+    <string name="order">طلب</string>
+
+
 </resources>

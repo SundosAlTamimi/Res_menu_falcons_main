@@ -4,13 +4,14 @@ import android.graphics.Bitmap;
 
 public class Items {
 
-    public String categoryName;
-    public String itemName;
-    public String itemBarcode;
-    public Bitmap categoryPic;
-    public String description;
-    public double price; // F_D
-    public Bitmap ItemPic;
+    private String categoryName;
+    private String itemName;
+    private String itemBarcode;
+    private Bitmap categoryPic;
+    private String description;
+    private double price; // F_D
+    private Bitmap ItemPic;
+    private int quantity = 1;
 
     public Items() {
 
@@ -95,5 +96,13 @@ public class Items {
 
     public void setItemPic(Bitmap itemPic) {
         ItemPic = itemPic;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

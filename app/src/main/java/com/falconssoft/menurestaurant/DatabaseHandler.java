@@ -98,7 +98,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-
     public void addItem(Items items) {
         db = this.getReadableDatabase();
         ContentValues values = new ContentValues();
@@ -251,13 +250,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return settingsList;
     }
 
-//**************************************************************************************************
-
-    public void deleteAllUsers() {
-        db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM " + USERS + ";");
-        db.close();
-    }
     public ArrayList<Items> getAllItemsByCategory(String CatName) {
         ArrayList<Items> items = new ArrayList<Items>();
 
@@ -298,6 +290,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return items;
     }
+
+    public ArrayList<String> getAllCategories() {
+        ArrayList<String> items = new ArrayList<>();
+
+        String selectQuery = "SELECT CATEGORY_NAME FROM " + ITEMS ;
+        db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                items.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        return items;
+    }
+
+//**************************************************************************************************
+
+    public void deleteAllUsers() {
+        db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + USERS + ";");
+        db.close();
+    }
+
 
     public void deleteAllSetting() {
         db = this.getWritableDatabase();

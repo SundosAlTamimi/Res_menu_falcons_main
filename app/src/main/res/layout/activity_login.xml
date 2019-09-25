@@ -127,8 +127,8 @@
             android:id="@+id/compName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="240dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
@@ -161,14 +161,15 @@
             app:layout_constraintStart_toEndOf="@+id/login_language_english"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/imageLogo"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="156dp"
             android:layout_marginLeft="156dp"
             android:layout_marginTop="232dp"
-            android:background="@drawable/logo_transparent"
+            android:background="@drawable/menulogo"
             app:civ_border_color="@color/white_dark"
             app:civ_border_width="2dp"
             app:layout_constraintStart_toStartOf="parent"
