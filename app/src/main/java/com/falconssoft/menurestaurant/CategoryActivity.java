@@ -66,6 +66,7 @@ DatabaseHandler baseHandler;
         list.add("Burger");
         list.add("Burger");
 
+        
         // vertical and cycle layout
         final CarouselLayoutManager layoutManager;
         layoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL, true);
