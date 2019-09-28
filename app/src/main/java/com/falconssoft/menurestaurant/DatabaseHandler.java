@@ -7,11 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 
-import com.falconssoft.menurestaurant.Models.Items;
-import com.falconssoft.menurestaurant.Models.Setting;
-import com.falconssoft.menurestaurant.Models.Users;
+import com.falconssoft.menurestaurant.models.Items;
+import com.falconssoft.menurestaurant.models.Setting;
+import com.falconssoft.menurestaurant.models.Users;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -160,7 +159,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-
+//**************************************************************************************************
 
     public List<Items> getAllItems() {
         List<Items> items = new ArrayList<Items>();
@@ -175,7 +174,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
                 item.setCategoryName(cursor.getString(0));
                 item.setItemName(cursor.getString(1));
-                item.setItemBarcode(Integer.parseInt(cursor.getString(2)));
+                item.setItemBarcode(cursor.getString(2));
                 item.setPrice(Double.parseDouble(cursor.getString(3)));
                 item.setDescription(cursor.getString(4));
 
@@ -252,6 +251,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return settingsList;
     }
 
+//**************************************************************************************************
 
     public void deleteAllUsers() {
         db = this.getWritableDatabase();
@@ -271,7 +271,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
                 item.setCategoryName(cursor.getString(0));
                 item.setItemName(cursor.getString(1));
-                item.setItemBarcode(Integer.parseInt(cursor.getString(2)));
+                item.setItemBarcode(cursor.getString(2));
                 item.setPrice(Double.parseDouble(cursor.getString(3)));
                 item.setDescription(cursor.getString(4));
 
@@ -305,6 +305,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void deleteAllItems() {
+        db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + ITEMS + ";");
+        db.close();
+    }
 
 
 

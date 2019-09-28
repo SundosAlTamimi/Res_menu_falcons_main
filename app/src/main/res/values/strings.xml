@@ -5,18 +5,27 @@
     <string name="login">Login</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="item_name">Item Name</string>
-    <string name="group_name">Group Name</string>
-    <string name="description">Description</string>
-    <string name="price">50$</string>
     <string name="ar">Ar</string>
     <string name="en">En</string>
-    <string name="category">Category ...</string>
+
+    <string name="group_name">Group Name</string>
+    <string name="item_name">Item Name</string>
+    <string name="description">Description</string>
+    <string name="price">50$</string>
+    <string name="category">Category</string>
     <string name="save">save</string>
     <string name="exit">Exit</string>
     <string name="groupname">Group Name</string>
     <string name="restaurant_name">Restaurant Name :</string>
-    <string name="ip_server">IP Server :</string>
+    <string name="ip_address">IP Server :</string>
     <string name="done">Done</string>
+
+    <string name="change_image">Change Image</string>
+    <string name="show_password">Show Password</string>
+    <string name="hide_password">Hide Password</string>
+
+    <string name="wrong_username">Username is wrong!</string>
+    <string name="wrong_password">Password is wrong!</string>
+    <string name="required_field">Required Field!</string>
 
 </resources>
