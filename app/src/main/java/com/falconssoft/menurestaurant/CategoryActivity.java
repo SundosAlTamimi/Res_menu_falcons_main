@@ -60,6 +60,7 @@ public class CategoryActivity extends AppCompatActivity{
         UserNameText = (TextView) findViewById(R.id.userName);
         UserNameText.setText(users);
 
+        
         // vertical and cycle layout
         layoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL, true);
         layoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());

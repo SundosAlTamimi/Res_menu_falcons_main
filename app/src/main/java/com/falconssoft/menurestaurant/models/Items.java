@@ -1,4 +1,4 @@
-package com.falconssoft.menurestaurant.models;
+package com.falconssoft.menurestaurant.Models;
 
 import android.graphics.Bitmap;
 
