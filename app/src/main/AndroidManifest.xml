@@ -11,7 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".OrdersActivity"></activity>
         <activity
             android:name=".LoginActivity"
             android:screenOrientation="sensorPortrait"
@@ -24,11 +23,11 @@
         </activity>
         <activity
             android:name=".CategoryActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="sensorPortrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".ItemsActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="sensorPortrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
     </application>
 

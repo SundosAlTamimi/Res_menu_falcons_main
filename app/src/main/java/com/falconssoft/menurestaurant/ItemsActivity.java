@@ -7,13 +7,11 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.falconssoft.menurestaurant.models.Items;
 import com.falconssoft.menurestaurant.models.Items;
 
 import java.util.ArrayList;
@@ -25,7 +23,7 @@ public class ItemsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TextView textViewCategoryName;
     private String categoryName;
-    private List<Items> filteredList = new ArrayList<>();
+    private List<Items> filteredList = new ArrayList<Items>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
