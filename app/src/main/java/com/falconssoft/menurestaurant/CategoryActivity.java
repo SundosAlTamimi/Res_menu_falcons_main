@@ -22,7 +22,6 @@ import android.widget.Toast;
 import com.azoft.carousellayoutmanager.CarouselLayoutManager;
 import com.azoft.carousellayoutmanager.CarouselZoomPostLayoutListener;
 import com.azoft.carousellayoutmanager.CenterScrollListener;
-import com.falconssoft.menurestaurant.models.Items;
 
 import java.util.ArrayList;
 import java.util.List;
