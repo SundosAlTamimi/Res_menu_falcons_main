@@ -28,7 +28,7 @@ import java.util.List;
 
 import static com.falconssoft.menurestaurant.MainSetting.categoryList;
 
-public class CategoryActivity extends AppCompatActivity {
+public class CategoryActivity extends AppCompatActivity{
 
     private TextView UserNameText;
     private SwipeRefreshLayout swipeRefresh;
@@ -86,13 +86,6 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
-
-
 
 }
 

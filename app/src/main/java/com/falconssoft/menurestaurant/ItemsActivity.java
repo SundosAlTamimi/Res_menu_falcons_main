@@ -12,6 +12,7 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.TextView;
 
 import com.falconssoft.menurestaurant.models.Items;
+import com.falconssoft.menurestaurant.models.Items;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,16 +23,16 @@ public class ItemsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TextView textViewCategoryName;
     private String categoryName;
-    private List<Items> filteredList = new ArrayList<>();
+    private List<Items> filteredList = new ArrayList<Items>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items);
 
+        textViewCategoryName = (TextView) findViewById(R.id.group_name);
         Intent intent = getIntent();
         categoryName = intent.getStringExtra("categoryName");
-        textViewCategoryName = (TextView) findViewById(R.id.group_name);
         textViewCategoryName.setText(categoryName);
 
         recyclerView = findViewById(R.id.recyclerview_item_list);
@@ -41,12 +42,11 @@ public class ItemsActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         chooseItemsAccordingCategory();
-
     }
 
     void chooseItemsAccordingCategory(){
         for (int i = 0; i< itemsList.size();i++){
-            if (itemsList.get(i).categoryName.equals(categoryName))
+            if (itemsList.get(i).getCategoryName().equals(categoryName))
                 filteredList.add(itemsList.get(i));
         }
 
@@ -59,7 +59,7 @@ public class ItemsActivity extends AppCompatActivity {
         LayoutAnimationController controller = null;
         if (type == 0) {
             controller = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_filldown);
-            AdapterItems adapter = new AdapterItems(context, itemsList);
+            AdapterItems adapter = new AdapterItems(this, itemsList);
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutAnimation(controller);
             recyclerView.getAdapter().notifyDataSetChanged();

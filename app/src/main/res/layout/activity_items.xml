@@ -4,36 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/dfood"
-    tools:context=".ItemsActivity"
-    android:layoutDirection="ltr">
+    android:layoutDirection="ltr"
+    android:orientation="vertical"
     tools:context=".ItemsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
         android:layout_height="match_parent"
-        android:background="@color/black_light">
+        android:background="@color/black_light"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/group_name"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="50dp"
-        android:padding="5dp"
-        android:gravity="center"
-        android:text="@string/group_name"
-        android:textColor="@color/white_dark"
-        android:textSize="60dp"
-        app:fontFamily="cursive" />
+        <TextView
+            android:id="@+id/group_name"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/group_name"
+            android:textColor="@color/white_dark"
+            android:textSize="60dp"
+            app:fontFamily="cursive" />
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:id="@+id/recyclerview_item_list"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="50dp"
-        android:scrollbars="vertical"
-        android:layout_height="wrap_content" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_item_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:scrollbars="vertical" />
     </LinearLayout>
 </LinearLayout>
